@@ -124,8 +124,8 @@ class _ScreenHomeState extends State<ScreenHome> {
                 child: GridView.count(
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: 2,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
+                  crossAxisSpacing: MediaQuery.of(context).size.width *0.02,
+                  mainAxisSpacing: MediaQuery.of(context).size.width *0.02,
                   childAspectRatio: 1.7,
                   children: [
                     GestureDetector(

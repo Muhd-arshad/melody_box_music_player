@@ -2,8 +2,7 @@
     package="com.example.musicplayer_flutter">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-    
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
    <application
         android:label="Melody_Box"
         android:name="${applicationName}"

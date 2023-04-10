@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:musicplayer_flutter/const_files/color_const.dart';
 import 'package:musicplayer_flutter/functions/db/favouritedb/favouritedb_functions.dart';
 import 'package:musicplayer_flutter/functions/db/mostlypaleddb/mostlypayeddb_functions.dart';
-import 'package:musicplayer_flutter/screen/home/home_screen.dart';
 import 'package:musicplayer_flutter/screen/playing_screen/nowplaying_screen.dart';
 import 'package:musicplayer_flutter/screen/widget/playlist/songstoplaylist.dart';
 import 'package:musicplayer_flutter/songController/song_controller.dart';

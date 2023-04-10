@@ -11,10 +11,9 @@ class ContainerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-      
+      child: Container(    
          
         decoration: BoxDecoration(
           color: color,

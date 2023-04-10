@@ -95,109 +95,110 @@ class _ScreenNowPlayingState extends State<ScreenNowPlaying> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(top: 20, left: 8),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: CircleAvatar(
-                      radius: 150,
-                      backgroundImage:
-                          AssetImage('assets/images/music-note.png'),
-                    ),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height ,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+               Padding(
+                padding: const EdgeInsets.only(top: 20, left: 8),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: CircleAvatar(
+                    radius: MediaQuery.of(context).size.width *.35,
+                    backgroundImage:
+                        AssetImage('assets/images/music-note.png'),
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 5),
+                child: Text(
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   widget.songModel[currentIndex].displayNameWOExt,
                   style: const TextStyle(color: secondaryCOlor),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  widget.songModel[currentIndex].artist.toString() ==
-                          '<unknown>'
-                      ? "Unknown Artist"
-                      : widget.songModel[currentIndex].artist.toString(),
-                  overflow: TextOverflow.clip,
-                  maxLines: 1,
-                  style: const TextStyle(color: secondaryCOlor),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      thumbColor: Colors.transparent,
-                      thumbShape: const RoundSliderThumbShape(
-                        enabledThumbRadius: 7,
-                        elevation: 5,
-                        pressedElevation: 5,
-                      ),
-                    ),
-                    child: Slider(
-                      activeColor: Colors.black,
-                      inactiveColor: secondaryCOlor,
-                      value: _position.inSeconds.toDouble(),
-                      max: _duration.inSeconds.toDouble(),
-                      min: const Duration(microseconds: 0).inSeconds.toDouble(),
-                      onChanged: (value) {
-                        if (mounted) {
-                          setState(
-                            () {
-                              changeToSeconds(
-                                value.toInt(),
-                              );
-                              value = value;
-                            },
-                          );
-                        }
-                      },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                widget.songModel[currentIndex].artist.toString() ==
+                        '<unknown>'
+                    ? "Unknown Artist"
+                    : widget.songModel[currentIndex].artist.toString(),
+                overflow: TextOverflow.clip,
+                maxLines: 1,
+                style: const TextStyle(color: secondaryCOlor),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+                child: SliderTheme(
+                  data: SliderTheme.of(context).copyWith(
+                    thumbColor: Colors.transparent,
+                    thumbShape: const RoundSliderThumbShape(
+                      enabledThumbRadius: 7,
+                      elevation: 5,
+                      pressedElevation: 5,
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 28, vertical: 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        _formatDuration(_position),
-                        style: const TextStyle(color: secondaryCOlor),
-                      ),
-                      Text(
-                        _formatDuration(_duration),
-                        style: const TextStyle(color: secondaryCOlor),
-                      ),
-                    ],
+                  child: Slider(
+                    activeColor: Colors.black,
+                    inactiveColor: secondaryCOlor,
+                    value: _position.inSeconds.toDouble(),
+                    max: _duration.inSeconds.toDouble(),
+                    min: const Duration(microseconds: 0).inSeconds.toDouble(),
+                    onChanged: (value) {
+                      if (mounted) {
+                        setState(
+                          () {
+                            changeToSeconds(
+                              value.toInt(),
+                            );
+                            value = value;
+                          },
+                        );
+                      }
+                    },
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 28, vertical: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      _formatDuration(_position),
+                      style: const TextStyle(color: secondaryCOlor),
+                    ),
+                    Text(
+                      _formatDuration(_duration),
+                      style: const TextStyle(color: secondaryCOlor),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: PlayingControls(
-                    count: widget.count,
-                    lastSong: lastSong,
-                    firstSong: firstSong,
-                    favouriteSongModel: widget.songModel[currentIndex],
-                  ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Expanded(
+                child: PlayingControls(
+                  count: widget.count,
+                  lastSong: lastSong,
+                  firstSong: firstSong,
+                  favouriteSongModel: widget.songModel[currentIndex],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
